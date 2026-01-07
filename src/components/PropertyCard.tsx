@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Bed, Bath, Square, Phone, MessageCircle, FileText } from 'lucide-react';
+import { MapPin, Image as ImageIcon, Phone, MessageCircle, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export interface Property {
@@ -14,7 +14,9 @@ export interface Property {
   bathrooms?: number;
   sqft?: number;
   image: string;
+  imageCount?: number;
   isFeatured?: boolean;
+  isVerified?: boolean;
   brochureUrl?: string;
 }
 
@@ -27,103 +29,85 @@ export function PropertyCard({ property }: PropertyCardProps) {
     if (price >= 10000000) {
       return `₹${(price / 10000000).toFixed(2)} Cr`;
     } else if (price >= 100000) {
-      return `₹${(price / 100000).toFixed(2)} L`;
+      return `₹${(price / 100000).toFixed(1)} Lac`;
     }
     return `₹${price.toLocaleString('en-IN')}`;
   };
 
-  const whatsappMessage = `Hi Houses Adda, I'm interested in this property: ${property.title} in ${property.area}, ${property.city}`;
+  const whatsappMessage = `Hi Houses Adda, I'm interested in: ${property.title} in ${property.area}`;
   const whatsappUrl = `https://wa.me/916301575658?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="bg-card rounded-2xl overflow-hidden card-shadow card-hover">
+    <div className="mb-property-card group">
       {/* Image */}
-      <Link to={`/property/${property.id}`} className="block property-image aspect-[4/3]">
+      <Link to={`/property/${property.id}`} className="block mb-property-image aspect-[4/3]">
         <img
           src={property.image}
           alt={property.title}
-          className="w-full h-full"
         />
+        
         {/* Featured Badge */}
         {property.isFeatured && (
-          <span className="absolute top-3 left-3 featured-badge">Featured</span>
+          <span className="mb-badge-featured">Featured</span>
         )}
-        {/* Property Type */}
-        <span className="absolute top-3 right-3 bg-foreground/80 text-background text-xs font-medium px-3 py-1 rounded-full">
-          {property.type}
+        
+        {/* Image Count */}
+        <span className="mb-image-count">
+          <ImageIcon className="h-3 w-3" />
+          {property.imageCount || 5}
         </span>
       </Link>
 
       {/* Content */}
-      <div className="p-4 md:p-5 space-y-3">
-        {/* Price */}
-        <div className="flex items-center justify-between">
-          <span className="text-xl md:text-2xl font-bold text-price">
-            {formatPrice(property.price)}
+      <div className="p-4 space-y-3">
+        {/* Property Type & Verified */}
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-medium text-foreground">
+            {property.bedrooms ? `${property.bedrooms} BHK` : ''} {property.type}
           </span>
-          {property.priceUnit && (
-            <span className="text-xs text-muted-foreground">{property.priceUnit}</span>
+          {property.isVerified && (
+            <span className="mb-badge-verified">
+              <CheckCircle2 className="h-3 w-3" />
+              Verified
+            </span>
           )}
+        </div>
+
+        {/* Price */}
+        <div>
+          <span className="mb-price">{formatPrice(property.price)}</span>
+          {property.sqft && (
+            <span className="mb-price-unit">| {property.sqft.toLocaleString()} sqft</span>
+          )}
+        </div>
+
+        {/* Location */}
+        <div className="flex items-center gap-1 text-muted-foreground text-sm">
+          <MapPin className="h-4 w-4 flex-shrink-0" />
+          <span className="truncate">{property.area}, {property.city}</span>
         </div>
 
         {/* Title */}
         <Link to={`/property/${property.id}`}>
-          <h3 className="text-base md:text-lg font-semibold text-foreground hover:text-primary transition-colors line-clamp-2">
+          <h3 className="text-sm font-medium text-foreground hover:text-primary transition-colors line-clamp-2">
             {property.title}
           </h3>
         </Link>
 
-        {/* Location */}
-        <div className="flex items-center gap-1.5 text-muted-foreground">
-          <MapPin className="h-4 w-4 flex-shrink-0" />
-          <span className="text-sm truncate">{property.area}, {property.city}</span>
-        </div>
-
-        {/* Specs */}
-        {(property.bedrooms || property.bathrooms || property.sqft) && (
-          <div className="flex items-center gap-4 pt-2 border-t border-border">
-            {property.bedrooms && (
-              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <Bed className="h-4 w-4" />
-                <span>{property.bedrooms} BHK</span>
-              </div>
-            )}
-            {property.bathrooms && (
-              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <Bath className="h-4 w-4" />
-                <span>{property.bathrooms}</span>
-              </div>
-            )}
-            {property.sqft && (
-              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <Square className="h-4 w-4" />
-                <span>{property.sqft} sqft</span>
-              </div>
-            )}
-          </div>
-        )}
-
         {/* Actions */}
         <div className="flex gap-2 pt-2">
           <a href="tel:+916301575658" className="flex-1">
-            <Button variant="outline" className="w-full text-sm">
-              <Phone className="h-4 w-4 mr-1.5" />
-              Call
+            <Button variant="outline" size="sm" className="w-full text-xs">
+              <Phone className="h-3.5 w-3.5 mr-1" />
+              Contact
             </Button>
           </a>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-            <Button className="w-full whatsapp-btn text-sm">
-              <MessageCircle className="h-4 w-4 mr-1.5" />
+            <Button size="sm" className="w-full mb-whatsapp text-xs">
+              <MessageCircle className="h-3.5 w-3.5 mr-1" />
               WhatsApp
             </Button>
           </a>
-          {property.brochureUrl && (
-            <a href={property.brochureUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="icon" className="flex-shrink-0">
-                <FileText className="h-4 w-4" />
-              </Button>
-            </a>
-          )}
         </div>
       </div>
     </div>

@@ -1,13 +1,14 @@
 import { useRef } from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { PropertyCard, Property } from './PropertyCard';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const featuredProperties: Property[] = [
   {
     id: '1',
     title: 'Luxury 3 BHK Apartment in Gachibowli',
-    type: 'Apartment',
+    type: 'Flat',
     city: 'Hyderabad',
     area: 'Gachibowli',
     price: 15000000,
@@ -16,8 +17,9 @@ const featuredProperties: Property[] = [
     bathrooms: 3,
     sqft: 2100,
     image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&q=80',
+    imageCount: 12,
     isFeatured: true,
-    brochureUrl: 'https://drive.google.com/file/d/example1',
+    isVerified: true,
   },
   {
     id: '2',
@@ -31,13 +33,13 @@ const featuredProperties: Property[] = [
     bathrooms: 6,
     sqft: 5500,
     image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop&q=80',
-    isFeatured: true,
-    brochureUrl: 'https://drive.google.com/file/d/example2',
+    imageCount: 18,
+    isVerified: true,
   },
   {
     id: '3',
     title: 'Modern 2 BHK in Hitech City',
-    type: 'Apartment',
+    type: 'Flat',
     city: 'Hyderabad',
     area: 'Hitech City',
     price: 9500000,
@@ -46,7 +48,8 @@ const featuredProperties: Property[] = [
     bathrooms: 2,
     sqft: 1350,
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&q=80',
-    isFeatured: true,
+    imageCount: 8,
+    isVerified: true,
   },
   {
     id: '4',
@@ -58,7 +61,7 @@ const featuredProperties: Property[] = [
     priceUnit: 'per acre',
     sqft: 200,
     image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop&q=80',
-    isFeatured: true,
+    imageCount: 5,
   },
   {
     id: '5',
@@ -70,7 +73,8 @@ const featuredProperties: Property[] = [
     priceUnit: 'onwards',
     sqft: 3000,
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop&q=80',
-    isFeatured: true,
+    imageCount: 10,
+    isVerified: true,
   },
 ];
 
@@ -79,67 +83,42 @@ export function FeaturedProperties() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -350 : 350;
+      const scrollAmount = direction === 'left' ? -320 : 320;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
   return (
-    <section className="py-12 md:py-20 bg-secondary/50">
+    <section className="py-10 md:py-14 bg-secondary/30">
       <div className="container">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-section-header">
           <div>
-            <div className="flex items-center gap-2 text-accent mb-2">
-              <Star className="h-5 w-5 fill-current" />
-              <span className="text-sm font-semibold uppercase tracking-wide">Featured</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-              Premium Properties
-            </h2>
-            <p className="text-muted-foreground mt-2">
-              Handpicked properties for discerning buyers
-            </p>
+            <h2 className="mb-section-title">Popular Owner Properties</h2>
           </div>
-
-          {/* Navigation - Desktop */}
-          <div className="hidden md:flex gap-2">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => scroll('left')}
-              className="rounded-full"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => scroll('right')}
-              className="rounded-full"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </Button>
+          <div className="flex items-center gap-3">
+            <Link to="/properties" className="text-primary text-sm font-medium hover:underline flex items-center gap-1">
+              See all Properties <ArrowRight className="h-4 w-4" />
+            </Link>
+            <div className="hidden md:flex gap-1">
+              <Button variant="outline" size="icon" onClick={() => scroll('left')} className="rounded-full h-9 w-9">
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              <Button variant="outline" size="icon" onClick={() => scroll('right')} className="rounded-full h-9 w-9">
+                <ChevronRight className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Scrollable Cards */}
         <div
           ref={scrollRef}
-          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4 md:mx-0 md:px-0"
+          className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4 md:mx-0 md:px-0"
         >
           {featuredProperties.map((property) => (
-            <div key={property.id} className="flex-shrink-0 w-[300px] md:w-[340px]">
+            <div key={property.id} className="flex-shrink-0 w-[280px] md:w-[300px]">
               <PropertyCard property={property} />
             </div>
           ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-8">
-          <Button variant="outline" className="px-8">
-            View All Featured Properties
-          </Button>
         </div>
       </div>
     </section>
