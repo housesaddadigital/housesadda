@@ -13,15 +13,15 @@ export function MobileActionBar({ propertyTitle }: MobileActionBarProps) {
   const whatsappUrl = `https://wa.me/916301575658?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="mobile-action-bar md:hidden">
+    <div className="mb-mobile-bar md:hidden">
       <a href="tel:+916301575658" className="flex-1">
-        <Button className="w-full call-btn py-3 rounded-xl">
+        <Button className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-md font-medium">
           <Phone className="h-5 w-5 mr-2" />
           Call Now
         </Button>
       </a>
       <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-        <Button className="w-full whatsapp-btn py-3 rounded-xl">
+        <Button className="w-full mb-whatsapp py-3 rounded-md font-medium">
           <MessageCircle className="h-5 w-5 mr-2" />
           WhatsApp
         </Button>

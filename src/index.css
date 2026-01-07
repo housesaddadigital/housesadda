@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,110 +6,106 @@
 
 @layer base {
   :root {
-    /* Houses Adda Brand Colors - Real Estate Professional */
-    --background: 0 0% 98%;
-    --foreground: 220 20% 15%;
+    /* Magicbricks-inspired Design System */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 0 0% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 0 0% 13%;
 
-    /* Primary - Deep Navy Blue (Trust & Professionalism) */
-    --primary: 220 70% 25%;
+    /* Primary - Magicbricks Red */
+    --primary: 355 85% 52%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Light Gray Blue */
-    --secondary: 210 25% 95%;
-    --secondary-foreground: 220 20% 25%;
+    /* Secondary - Light Gray */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 13%;
 
-    --muted: 210 20% 94%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    /* Accent - Warm Orange (CTA & Energy) */
-    --accent: 25 95% 53%;
+    /* Accent - Red/Orange */
+    --accent: 355 85% 52%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 220 70% 25%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 355 85% 52%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Custom Real Estate Tokens */
-    --price: 142 70% 35%;
-    --price-light: 142 60% 94%;
+    /* Custom Tokens */
+    --price: 145 63% 32%;
+    --price-light: 145 40% 94%;
+    --verified: 210 100% 50%;
+    --verified-light: 210 100% 96%;
     --featured: 40 100% 50%;
-    --whatsapp: 142 70% 45%;
-    --call: 220 70% 50%;
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 70% 25%) 0%, hsl(220 60% 35%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(35 95% 55%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 25% 98%) 100%);
+    /* Header */
+    --header-bg: 355 75% 42%;
     
     /* Shadows */
-    --shadow-sm: 0 1px 3px hsl(220 20% 15% / 0.08);
-    --shadow-md: 0 4px 12px hsl(220 20% 15% / 0.1);
-    --shadow-lg: 0 8px 30px hsl(220 20% 15% / 0.12);
-    --shadow-card: 0 2px 8px hsl(220 20% 15% / 0.06), 0 8px 24px hsl(220 20% 15% / 0.08);
-    --shadow-hover: 0 12px 40px hsl(220 20% 15% / 0.15);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+    --shadow-card: 0 2px 8px rgba(0,0,0,0.08);
     
     /* Sidebar defaults */
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 20% 15%;
-    --sidebar-primary: 220 70% 25%;
+    --sidebar-foreground: 0 0% 13%;
+    --sidebar-primary: 355 85% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 25% 95%;
-    --sidebar-accent-foreground: 220 20% 25%;
-    --sidebar-border: 220 15% 88%;
-    --sidebar-ring: 220 70% 25%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 13%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 355 85% 52%;
   }
 
   .dark {
-    --background: 220 25% 8%;
-    --foreground: 210 20% 95%;
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
 
-    --card: 220 25% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 220 25% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 220 60% 55%;
+    --primary: 355 85% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 210 20% 95%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 20% 18%;
-    --muted-foreground: 215 15% 60%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 25 95% 55%;
+    --accent: 355 85% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 220 60% 55%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 355 85% 55%;
 
-    --price: 142 60% 45%;
-    --price-light: 142 30% 18%;
+    --header-bg: 355 75% 38%;
     
-    --sidebar-background: 220 25% 10%;
-    --sidebar-foreground: 210 20% 95%;
-    --sidebar-primary: 220 60% 55%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 355 85% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 20% 18%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 220 20% 20%;
-    --sidebar-ring: 220 60% 55%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 355 85% 55%;
   }
 }
 
@@ -120,80 +116,177 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
-    @apply font-semibold tracking-tight;
+    font-family: 'Open Sans', sans-serif;
+    @apply font-semibold;
   }
 }
 
 @layer components {
-  .hero-gradient {
-    background: var(--gradient-hero);
+  /* Magicbricks Header Style */
+  .mb-header {
+    @apply bg-[hsl(var(--header-bg))] text-white;
   }
   
-  .accent-gradient {
-    background: var(--gradient-accent);
+  .mb-header-secondary {
+    @apply bg-white border-b border-border shadow-sm;
   }
   
-  .card-gradient {
-    background: var(--gradient-card);
+  /* Search Bar Magicbricks Style */
+  .mb-search-container {
+    @apply bg-white rounded-lg shadow-lg p-1 flex items-center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   }
   
-  .price-badge {
-    @apply text-[hsl(var(--price))] bg-[hsl(var(--price-light))] font-bold px-3 py-1 rounded-full;
+  .mb-search-input {
+    @apply border-0 focus:ring-0 focus:outline-none bg-transparent text-sm;
   }
   
-  .featured-badge {
-    @apply bg-[hsl(var(--featured))] text-white font-semibold px-3 py-1 rounded-full text-xs uppercase tracking-wide;
+  .mb-search-divider {
+    @apply h-8 w-px bg-border mx-2;
   }
   
-  .whatsapp-btn {
-    @apply bg-[hsl(var(--whatsapp))] hover:bg-[hsl(142_70%_40%)] text-white font-medium transition-all duration-200;
+  .mb-search-btn {
+    @apply bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-semibold transition-colors;
   }
   
-  .call-btn {
-    @apply bg-[hsl(var(--call))] hover:bg-[hsl(220_70%_45%)] text-white font-medium transition-all duration-200;
+  /* Tab Navigation */
+  .mb-tabs {
+    @apply flex items-center gap-1 bg-secondary rounded-lg p-1;
   }
   
-  .card-shadow {
-    box-shadow: var(--shadow-card);
+  .mb-tab {
+    @apply px-4 py-2 text-sm font-medium rounded-md transition-colors text-muted-foreground hover:text-foreground;
   }
   
-  .card-hover {
-    @apply transition-all duration-300;
+  .mb-tab-active {
+    @apply bg-white text-primary shadow-sm;
   }
   
-  .card-hover:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-4px);
+  /* Property Card Magicbricks Style */
+  .mb-property-card {
+    @apply bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300;
   }
   
-  /* Mobile bottom bar */
-  .mobile-action-bar {
-    @apply fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border p-3 flex gap-3;
-    box-shadow: 0 -4px 20px hsl(220 20% 15% / 0.1);
+  .mb-property-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
   }
   
-  /* Search bar styling */
-  .search-container {
-    @apply bg-white rounded-2xl p-4 md:p-6;
-    box-shadow: var(--shadow-lg);
+  .mb-property-image {
+    @apply relative overflow-hidden;
   }
   
-  /* Property image container */
-  .property-image {
-    @apply relative overflow-hidden rounded-xl;
+  .mb-property-image img {
+    @apply w-full h-full object-cover transition-transform duration-300;
   }
   
-  .property-image img {
+  .mb-property-card:hover .mb-property-image img {
+    transform: scale(1.02);
+  }
+  
+  .mb-image-count {
+    @apply absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded flex items-center gap-1;
+  }
+  
+  /* Price Badge */
+  .mb-price {
+    @apply text-lg font-bold text-foreground;
+  }
+  
+  .mb-price-unit {
+    @apply text-sm font-normal text-muted-foreground ml-1;
+  }
+  
+  /* Property Specs */
+  .mb-specs {
+    @apply flex items-center gap-3 text-sm text-muted-foreground;
+  }
+  
+  .mb-spec-item {
+    @apply flex items-center gap-1;
+  }
+  
+  .mb-spec-divider {
+    @apply text-border;
+  }
+  
+  /* Featured Badge */
+  .mb-badge-featured {
+    @apply absolute top-2 left-2 bg-[hsl(var(--featured))] text-white text-xs font-bold px-2 py-1 rounded;
+  }
+  
+  .mb-badge-verified {
+    @apply inline-flex items-center gap-1 text-xs text-[hsl(var(--verified))] bg-[hsl(var(--verified-light))] px-2 py-0.5 rounded;
+  }
+  
+  /* Section Headers */
+  .mb-section-header {
+    @apply flex items-center justify-between mb-6;
+  }
+  
+  .mb-section-title {
+    @apply text-xl md:text-2xl font-bold text-foreground relative;
+  }
+  
+  .mb-section-title::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-12 h-1 bg-primary rounded-full;
+  }
+  
+  /* Category Cards */
+  .mb-category-card {
+    @apply relative rounded-lg overflow-hidden cursor-pointer;
+  }
+  
+  .mb-category-card img {
     @apply w-full h-full object-cover transition-transform duration-500;
   }
   
-  .property-image:hover img {
-    transform: scale(1.05);
+  .mb-category-card:hover img {
+    transform: scale(1.1);
+  }
+  
+  .mb-category-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent;
+  }
+  
+  .mb-category-content {
+    @apply absolute bottom-0 left-0 right-0 p-4 text-white;
+  }
+  
+  /* Buttons */
+  .mb-btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2.5 rounded transition-colors;
+  }
+  
+  .mb-btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold px-6 py-2.5 rounded transition-colors;
+  }
+  
+  .mb-btn-contact {
+    @apply bg-[hsl(var(--price))] hover:bg-[hsl(145_63%_28%)] text-white font-medium px-4 py-2 rounded transition-colors;
+  }
+  
+  /* WhatsApp Button */
+  .mb-whatsapp {
+    @apply bg-[#25D366] hover:bg-[#20BD5A] text-white font-medium transition-colors;
+  }
+  
+  /* Mobile Bottom Bar */
+  .mb-mobile-bar {
+    @apply fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border p-3 flex gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.1)];
+  }
+  
+  /* Card Shadow */
+  .mb-shadow {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .mb-shadow-hover:hover {
+    box-shadow: var(--shadow-lg);
   }
 }
 
@@ -209,5 +302,19 @@
   
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+  
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
